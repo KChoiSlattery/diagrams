@@ -1,0 +1,36 @@
+# General Notebook Dependencies
+jupyter
+ipykernel
+ipywidgets
+matplotlib
+
+# Specific Notebook Dependencies
+git+https://github.gatech.edu/PXL/afnlib.git
+git+https://github.gatech.edu/PXL/aerosol-inversion.git
+numpy
+tqdm
+numba
+scipy
+cvxpy
+pandas
+seaborn
+scikit-learn
+mosek
+cupy-cuda13x
+
+# Tests
+xdoctest
+pytest
+
+# Generating documentation
+pdoc
+
+# Cleaning notebooks
+nb-Clean
+pre-commit
+
+# Formatting
+black[jupyter]
+
+# Compiling requirements.txt
+pip-tools

@@ -1,0 +1,121 @@
+% \documentclass[crop]{standalone}
+\documentclass[border=2pt, varwidth]{standalone}
+
+\usepackage{amsmath}
+\usepackage{multirow}
+\everymath{\displaystyle}
+\renewcommand{\arraystretch}{2}
+
+\usepackage{xcolor}
+\usepackage{xparse}
+\usepackage{amsmath}
+\usepackage{ifthen}
+\usepackage{amssymb}
+\usepackage{patchcmd}
+\usepackage{esint}
+\usepackage{nicefrac}
+\usepackage{xstring}
+\usepackage{mathtools}
+\usepackage{multirow}
+\usepackage{tabularx}
+\usepackage{siunitx}
+
+\definecolor{black}{RGB}{0,0,0}
+\definecolor{darkgrey}{RGB}{56,58,66}
+\definecolor{lightgrey}{RGB}{160,161,167}
+\definecolor{cyan}{RGB}{0, 152, 221}
+\definecolor{green}{RGB}{35,151,74}
+\definecolor{lightgreen}{RGB}{111, 148, 119}
+\definecolor{brown}{RGB}{160,90,72}
+\definecolor{yellow}{RGB}{197,163,50}
+\definecolor{pink}{RGB}{255, 51, 192}
+\definecolor{purple}{RGB}{205,47,222}
+\definecolor{blue}{RGB}{39,95,228}
+\definecolor{orange}{RGB}{223,99,28}
+\definecolor{red}{RGB}{213,39,83}
+\newcommand{\anno}[1]{\color{lightgrey}{#1}}
+
+\begin{document}
+
+% \begin{document}
+% \setlength{\extrarowheight}{3pt}
+
+
+\newcommand{\diff}[1]{
+d
+}
+
+\newcommand{\ddiff}[1]{
+\delta
+}
+
+\newcommand{\change}[1]{
+\Delta
+}
+
+\newcommand{\pdiff}[1]{
+\partial
+}
+
+%command to define new quantities, argument order is: handle, color, symbol
+\newcommand{\newquant}[3]{
+
+    %patch the diff command
+    \patchcommand\diff{\ifthenelse{\equal{#1}{##1}}{\color{#2}}{}}{\ifthenelse{\equal{#1}{##1}}{#1}{}}
+
+    %patch the pdiff command
+    \patchcommand\ddiff{\ifthenelse{\equal{#1}{##1}}{\color{#2}}{}}{\ifthenelse{\equal{#1}{##1}}{#1}{}}
+
+    %patch the qdiff command
+    \patchcommand\pdiff{\ifthenelse{\equal{#1}{##1}}{\color{#2}}{}}{\ifthenelse{\equal{#1}{##1}}{#1}{}}
+
+    %patch the change command
+    \patchcommand\change{\ifthenelse{\equal{#1}{##1}}{\color{#2}}{}}{\ifthenelse{\equal{#1}{##1}}{#1}{}}
+    
+    %add the symbol as a command    
+    \expandarg
+    \exploregroups
+        %to avoid double subscripts
+        \IfSubStr{#3}{_}{ 
+            \newcommand{#1}[1][]{
+                \color{#2}{\StrBefore{#3}{_}_{\StrBehind{#3}{_} ##1}}\color{black}
+                }
+        }{
+            \newcommand{#1}[1][]{
+                \color{#2}{#3_{##1}}\color{black}
+                }
+        }
+        
+}
+
+\def\vec{\vectorbold}
+
+
+\newcommand{\surfint}[1][]{\color{red}{\iint_{\Sigma}}\color{black}#1\diff{\area}}
+
+\newcommand{\csurfint}[1][]{\color{red}{\oiint_{\partial\Omega}}\color{black}#1\diff{\area}}
+
+\newcommand{\clineint}[1][]{\color{blue}{\oint_{\partial\Sigma}}\color{black}#1\diff{\path}}
+
+\newcommand{\volint}[1][]{\color{green}{\iiint_{\Omega}}\color{black}#1\diff{\volume}}
+
+%time
+\renewcommand{\t}[1][]{t_{#1}}
+\newcommand{\ddt}[1][]{\frac{\diff{#1}}{d\t}}
+\newcommand{\dddt}[1][]{\frac{d^2#1}{d\t^2}}
+%Basic
+\newquant{\mass}{brown}{m}
+\newquant{\energy}{orange}{E}
+\newquant{\momentum}{purple}{p}
+\newquant{\vel}{blue}{v}
+\newquant{\lightspeed}{blue}{c}
+\newquant{\wvl}{green}{\lambda}
+\newquant{\freq}{purple}{f}
+
+
+% Universal Constants
+\newquant{\planck}{yellow}{h}
+
+
+  ADD_CONTENT_HERE
+\end{document}

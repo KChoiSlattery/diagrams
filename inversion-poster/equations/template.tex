@@ -1,0 +1,38 @@
+% \documentclass[crop]{standalone}
+\documentclass[border=2pt, varwidth]{standalone}
+
+\usepackage{amsmath}
+% \usepackage{cmbright}
+\usepackage{bm}
+\usepackage{xcolor}
+
+%% Colors Kieran likes
+\definecolor{black}{RGB}{0,0,0}
+\definecolor{darkgrey}{RGB}{56,58,66}
+\definecolor{lightgrey}{RGB}{160,161,167}
+\definecolor{teal}{HTML}{14CFCF}
+\definecolor{green}{RGB}{35,151,74}
+\definecolor{lightgreen}{RGB}{118, 227, 59}
+\definecolor{brown}{RGB}{160,90,72}
+\definecolor{yellow}{RGB}{197,163,50}
+\definecolor{pink}{HTML}{F24BA7}
+\definecolor{purple}{RGB}{205,47,222}
+\definecolor{blue}{HTML}{0B80F2}
+\definecolor{orange}{RGB}{223,99,28}
+\definecolor{red}{RGB}{213,39,83}
+\definecolor{gold}{RGB}{255,192,0}
+
+%% Custom colored Boxes
+% I forget where but this is straight from stackexchange
+\usepackage{tcolorbox}
+\tcbuselibrary{theorems}
+\newcommand*{\kcb}[2]{
+\tcbset{my math box/.style={
+          colback=#1!10!white, colframe=#1, size=fbox, arc=3pt, boxrule=1pt}
+}
+\tcboxmath[my math box]{#2}}
+
+\begin{document}
+\fontsize{24}{28}\selectfont
+  ADD_CONTENT_HERE
+\end{document}

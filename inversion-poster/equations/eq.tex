@@ -1,0 +1,23 @@
+%% SECTION: basis
+$$f(D_p, n)=\sum_{i=1}^k a_j b_j(D_p, n)$$
+
+%% SECTION: bincounts
+$$\mathbb{E}[y_j]=\sum_{j=1}^k a_j P(u\in \mathcal{U}_i|b_j)$$
+
+%% SECTION: bincounts-vector
+$$\mathbf{y}\approx\bm{K}\mathbf{a},\ K_{ij}=P(u\in \mathcal{U}_i|b_j)$$
+
+%% SECTION: ml
+\begin{align}
+    \hat{\mathbf{a}}=\underset{\mathbf{a}}{\operatorname{argmax}}\quad& \sum_j y_j \log \frac{y_j}{(\bm{K}\mathbf{a})_j}\nonumber\\
+    \text{such that}\quad&\sum_i a_i=1\nonumber
+\end{align}
+
+%% SECTION: u1
+$$\kcb{purple}{u_1}$$
+
+%% SECTION: u2
+$$\kcb{purple}{u_2}$$
+
+%% SECTION: x
+$$\kcb{blue}{(D_p, n)}$$

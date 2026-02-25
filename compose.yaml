@@ -1,0 +1,8 @@
+services:
+  env:
+    build: 
+      context: .
+      dockerfile: Dockerfile
+    stdin_open: true
+    volumes:
+      - .:/app
