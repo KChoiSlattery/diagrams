@@ -1,0 +1,7 @@
+repos:
+  - repo: https://github.com/srstevenson/nb-clean
+    rev: 4.0.1
+    hooks:
+      - id: nb-clean
+        args:
+          - --preserve-cell-outputs

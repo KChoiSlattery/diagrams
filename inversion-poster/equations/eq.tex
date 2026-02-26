@@ -1,18 +1,3 @@
-%% SECTION: basis
-$$f(D_p, n)=\sum_{i=1}^k a_j b_j(D_p, n)$$
-
-%% SECTION: bincounts
-$$\mathbb{E}[y_j]=\sum_{j=1}^k a_j P(u\in \mathcal{U}_i|b_j)$$
-
-%% SECTION: bincounts-vector
-$$\mathbf{y}\approx\bm{K}\mathbf{a},\ K_{ij}=P(u\in \mathcal{U}_i|b_j)$$
-
-%% SECTION: ml
-\begin{align}
-    \hat{\mathbf{a}}=\underset{\mathbf{a}}{\operatorname{argmax}}\quad& \sum_j y_j \log \frac{y_j}{(\bm{K}\mathbf{a})_j}\nonumber\\
-    \text{such that}\quad&\sum_i a_i=1\nonumber
-\end{align}
-
 %% SECTION: u1
 $$\kcb{purple}{u_1}$$
 
@@ -21,3 +6,45 @@ $$\kcb{purple}{u_2}$$
 
 %% SECTION: x
 $$\kcb{blue}{(D_p, n)}$$
+
+%% SECTION: basis
+$$f(D_p, n)=\sum_{i=1}^k a_j b_j(D_p, n)$$
+
+% %% SECTION: bincounts
+% $$\mathbb{E}[y_j]=\sum_{j=1}^k a_j P(u\in \mathcal{U}_i|b_j)$$
+
+%% SECTION: bincounts-vector
+$$\mathbf{y}\approx\bm{K}\mathbf{a},\ K_{ij}=\overset{\color{yellow}{\textbf{Conditional}\ \textbf{Prob.}}}{\kcb{yellow}{P(u\in \mathcal{U}_i|b_j)}}$$
+
+% %% SECTION: ml
+% \begin{align}
+%     \hat{\mathbf{a}}=\underset{\mathbf{a}}{\operatorname{argmin}}\quad& \sum_j y_j \log \frac{(\bm{K}\mathbf{a})_j}{y_j}\nonumber\\
+%     \text{such that}\quad&\sum_i a_i=1,\mathbf{a}\geq0\nonumber
+% \end{align}
+
+%% SECTION: reg_ml
+\begin{align}
+    \hat{\mathbf{a}}=\underset{\mathbf{a}}{\operatorname{argmin}}\quad&\overset{\color{pink}{\mathbf{Data}\ \mathbf{Misfit}}}{\kcb{pink}{\sum_j y_j \log \frac{(\bm{K}\mathbf{a})_j}{y_j}}}+\overset{\color{green}{\mathbf{Solution}\ \mathbf{Roughness}}}{\kcb{green}{\iint\left(\lambda_1\frac{\partial^2 \hat{f}}{\partial D_p^2}+\lambda_2\frac{\partial^2 \hat{f}}{\partial n^2}\right)^2\ dD_p\ dn}} \nonumber\\
+    \text{such that}\quad&\operatorname{sum}(\mathbf{a})=1,\mathbf{a}\geq0\nonumber
+\end{align}
+
+%% SECTION: Ui
+\fontsize{24}{42}\selectfont
+$$u\in \mathcal{U}_i$$
+
+%% SECTION: u1_cartoon
+$$u_1$$
+
+%% SECTION: u2_cartoon
+$$u_2$$
+
+%% SECTION: argmin
+$$\hat{f}=\bm{B}\hat{\mathbf{a}}$$
+$$\operatorname{minimize}$$
+$$\kcb{pink}{D(\mathbf{a};\mathbf{y})}+\kcb{green}{\lambda R\left(\hat{f}\right)}$$
+
+%% SECTION: case1
+$$\theta_c=40^\circ$$
+
+%% SECTION: case2
+$$\theta_c=165^\circ$$
